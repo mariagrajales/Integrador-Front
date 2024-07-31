@@ -21,7 +21,7 @@ const ButtonGroup = () => {
 
     if (result.isConfirmed) {
       try {
-        await axios.post('http://localhost:3300/users/logout', {}, {
+        await axios.post('https://walle-up-back.freemyip.com/users/logout', {}, {
           withCredentials: true
         });
         console.log('Sesión cerrada exitosamente');

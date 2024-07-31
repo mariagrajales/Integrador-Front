@@ -10,7 +10,7 @@ const Header = ({ onLogoutClick }) => {
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const response = await axios.get('http://localhost:3300/users/profile', {
+        const response = await axios.get('https://walle-up-back.freemyip.com/users/profile', {
           withCredentials: true,
         });
         const userData = response.data.data;

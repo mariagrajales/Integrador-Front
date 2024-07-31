@@ -22,7 +22,7 @@ const LoginSection = () => {
             return;
         }
         
-        axios.post('http://localhost:3300/users/login', {
+        axios.post('https://walle-up-back.freemyip.com/users/login', {
             email: email, 
             password: password  
         }, {

@@ -28,7 +28,7 @@ const CardMaster = ({ grado, grupo, estudiantes, tareas, groupId, onAddTarea, on
     try {
       if (editTaskData) {
         await axios.patch(
-          `http://localhost:3300/homeworks/${editTaskData.id}`,
+          `https://walle-up-back.freemyip.com/homeworks/${editTaskData.id}`,
           {
             description: taskData.descripcion,
             delivery_date: taskData.fechaEntrega,
@@ -49,7 +49,7 @@ const CardMaster = ({ grado, grupo, estudiantes, tareas, groupId, onAddTarea, on
         });
       } else {
         const response = await axios.post(
-          'http://localhost:3300/homeworks',
+          'https://walle-up-back.freemyip.com/homeworks',
           {
             description: taskData.descripcion,
             delivery_date: taskData.fechaEntrega,
@@ -101,7 +101,7 @@ const CardMaster = ({ grado, grupo, estudiantes, tareas, groupId, onAddTarea, on
 
     if (result.isConfirmed) {
       try {
-        await axios.delete(`http://localhost:3300/homeworks/${taskId}`, {
+        await axios.delete(`https://walle-up-back.freemyip.com/homeworks/${taskId}`, {
           withCredentials: true,
         });
         Swal.fire({
@@ -130,7 +130,7 @@ const CardMaster = ({ grado, grupo, estudiantes, tareas, groupId, onAddTarea, on
 
   const fetchAllStudents = async () => {
     try {
-      const response = await axios.get('http://localhost:3300/users', {
+      const response = await axios.get('https://walle-up-back.freemyip.com/users', {
         withCredentials: true,
       });
       if (response.data && response.data.data) {
@@ -168,7 +168,7 @@ const CardMaster = ({ grado, grupo, estudiantes, tareas, groupId, onAddTarea, on
     }
 
     try {
-      await axios.post('http://localhost:3300/student_groups', {
+      await axios.post('https://walle-up-back.freemyip.com/student_groups', {
         id_student: selectedStudentId,
         id_group: groupId,
       }, {

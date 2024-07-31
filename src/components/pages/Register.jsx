@@ -20,7 +20,7 @@ export const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      const response = await axios.post('http://localhost:3300/users', formData)
+      const response = await axios.post('https://walle-up-back.freemyip.com/users', formData)
       console.log('Usuario registrado:', response.data)
     } catch (error) {
       console.error('Error al registrar:', error)

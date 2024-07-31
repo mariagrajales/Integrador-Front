@@ -19,7 +19,7 @@ const HomePageMaster = () => {
 
   const fetchUserProfile = useCallback(async () => {
     try {
-      const response = await axios.get('http://localhost:3300/users/profile', {
+      const response = await axios.get('https://walle-up-back.freemyip.com/users/profile', {
         withCredentials: true,
       });
       if (response.data && response.data.data && response.data.data.id) {
@@ -42,7 +42,7 @@ const HomePageMaster = () => {
     if (userId) {
       const fetchGrupos = async () => {
         try {
-          const response = await axios.get(`http://localhost:3300/groups/user/${userId}`, {
+          const response = await axios.get(`https://walle-up-back.freemyip.com/groups/user/${userId}`, {
             withCredentials: true,
           });
           if (response.data && response.data.data) {
@@ -51,7 +51,7 @@ const HomePageMaster = () => {
 
             const tareasPromises = gruposData.map(async (grupo) => {
               try {
-                const tareasResponse = await axios.get(`http://localhost:3300/homeworks/group/${grupo.id}`, {
+                const tareasResponse = await axios.get(`https://walle-up-back.freemyip.com/homeworks/group/${grupo.id}`, {
                   withCredentials: true,
                 });
                 return { id: grupo.id, tareas: tareasResponse.data.data };
@@ -74,7 +74,7 @@ const HomePageMaster = () => {
 
             const estudiantesPromises = gruposData.map(async (grupo) => {
               try {
-                const estudiantesResponse = await axios.get(`http://localhost:3300/groups/${grupo.id}/users`, {
+                const estudiantesResponse = await axios.get(`https://walle-up-back.freemyip.com/groups/${grupo.id}/users`, {
                   withCredentials: true,
                 });
                 return { id: grupo.id, estudiantes: estudiantesResponse.data.data };
@@ -133,7 +133,7 @@ const HomePageMaster = () => {
       cancelButtonText: 'Cancelar'
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:3300/groups/${groupId}`, {
+        axios.delete(`https://walle-up-back.freemyip.com/groups/${groupId}`, {
           withCredentials: true,
         })
         .then(() => {

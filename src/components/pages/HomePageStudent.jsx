@@ -18,7 +18,7 @@ const HomePageStudent = () => {
   useEffect(() => {
     const fetchUserProfile = async () => {
       try {
-        const response = await axios.get('http://localhost:3300/users/profile', {
+        const response = await axios.get('https://walle-up-back.freemyip.com/users/profile', {
           withCredentials: true
         });
 
@@ -27,7 +27,7 @@ const HomePageStudent = () => {
         console.log("ID del usuario:", id);
 
         if (id) {
-          const groupsResponse = await axios.get(`http://localhost:3300/student_groups/user/${id}`, {
+          const groupsResponse = await axios.get(`https://walle-up-back.freemyip.com/student_groups/user/${id}`, {
             withCredentials: true
           });
 
@@ -35,13 +35,13 @@ const HomePageStudent = () => {
           groupsResponse.data.data.forEach(group => console.log(group.id_group));
 
           const groupsWithUsersAndHomeworks = await Promise.all(groupsResponse.data.data.map(async (group) => {
-            const usersResponse = await axios.get(`http://localhost:3300/groups/${group.id_group}/users`, {
+            const usersResponse = await axios.get(`https://walle-up-back.freemyip.com/groups/${group.id_group}/users`, {
               withCredentials: true
             });
 
             let homeworks = [];
             try {
-              const homeworksResponse = await axios.get(`http://localhost:3300/homeworks/group/${group.id_group}`, {
+              const homeworksResponse = await axios.get(`https://walle-up-back.freemyip.com/homeworks/group/${group.id_group}`, {
                 withCredentials: true
               });
               homeworks = homeworksResponse.data.data;
@@ -61,7 +61,7 @@ const HomePageStudent = () => {
 
           // Obtener las entregas del usuario
           try {
-            const userDeliveriesResponse = await axios.get(`http://localhost:3300/deliveries/user/${id}`, {
+            const userDeliveriesResponse = await axios.get(`https://walle-up-back.freemyip.com/deliveries/user/${id}`, {
               withCredentials: true
             });
             console.log("Entregas del usuario:", userDeliveriesResponse.data);
@@ -128,7 +128,7 @@ const HomePageStudent = () => {
 
     if (result.isConfirmed) {
       try {
-        const response = await axios.post('http://localhost:3300/deliveries', {
+        const response = await axios.post('https://walle-up-back.freemyip.com/deliveries', {
           id_homework: selectedHomework.id,
           id_student: userId,
           file: link

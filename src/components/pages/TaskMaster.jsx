@@ -19,7 +19,7 @@ const GroupTaskMaster = () => {
     useEffect(() => {
         const fetchGroups = async () => {
             try {
-                const response = await axios.get('http://localhost:3300/groups', {
+                const response = await axios.get('https://walle-up-back.freemyip.com/groups', {
                     withCredentials: true,
                 });
                 setGroups(response.data.data.data);
@@ -30,7 +30,7 @@ const GroupTaskMaster = () => {
 
         const fetchUsers = async () => {
             try {
-                const response = await axios.get('http://localhost:3300/users', {
+                const response = await axios.get('https://walle-up-back.freemyip.com/users', {
                     withCredentials: true,
                 });
                 setUsers(response.data.data || []);
@@ -48,7 +48,7 @@ const GroupTaskMaster = () => {
         if (selectedGroupId) {
             const fetchHomeworks = async () => {
                 try {
-                    const response = await axios.get(`http://localhost:3300/homeworks/group/${selectedGroupId}`, {
+                    const response = await axios.get(`https://walle-up-back.freemyip.com/homeworks/group/${selectedGroupId}`, {
                         withCredentials: true,
                     });
                     setHomeworks(response.data.data || []);
@@ -60,7 +60,7 @@ const GroupTaskMaster = () => {
 
             const fetchDeliveries = async () => {
                 try {
-                    const response = await axios.get('http://localhost:3300/deliveries', {
+                    const response = await axios.get('https://walle-up-back.freemyip.com/deliveries', {
                         withCredentials: true,
                     });
                     setDeliveries(response.data.data.data || []);
@@ -93,7 +93,7 @@ const GroupTaskMaster = () => {
 
     const handleGradeSubmit = async (homeworkId, deliveryId) => {
         try {
-            const response = await axios.patch(`http://localhost:3300/deliveries/grade/${deliveryId}`, {
+            const response = await axios.patch(`https://walle-up-back.freemyip.com/deliveries/grade/${deliveryId}`, {
                 grade: grading[`${homeworkId}-${deliveryId}`] || 0
             }, {
                 withCredentials: true,

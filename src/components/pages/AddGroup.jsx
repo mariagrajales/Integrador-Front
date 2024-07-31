@@ -19,7 +19,7 @@ const AddGroup = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const profileResponse = await axios.get('http://localhost:3300/users/profile', {
+        const profileResponse = await axios.get('https://walle-up-back.freemyip.com/users/profile', {
           withCredentials: true
         });
         console.log('Respuesta del perfil:', profileResponse.data);
@@ -36,7 +36,7 @@ const AddGroup = () => {
           console.error('Formato de respuesta del perfil inesperado');
         }
 
-        const studentsResponse = await axios.get('http://localhost:3300/users', {
+        const studentsResponse = await axios.get('https://walle-up-back.freemyip.com/users', {
           withCredentials: true
         });
         console.log('Respuesta de la lista de usuarios:', studentsResponse.data);
@@ -82,7 +82,7 @@ const AddGroup = () => {
     }
     console.log('Intentando crear grupo con ID de profesor:', teacherId);
     try {
-      const grupoResponse = await axios.post('http://localhost:3300/groups', {
+      const grupoResponse = await axios.post('https://walle-up-back.freemyip.com/groups', {
         name: nombre,
         id_teacher: teacherId
       }, {
@@ -130,7 +130,7 @@ const AddGroup = () => {
 
     for (let estudianteId of estudiantesSeleccionados) {
       try {
-        const response = await axios.post('http://localhost:3300/student_groups', {
+        const response = await axios.post('https://walle-up-back.freemyip.com/student_groups', {
           id_student: estudianteId,
           id_group: grupoId
         }, {
